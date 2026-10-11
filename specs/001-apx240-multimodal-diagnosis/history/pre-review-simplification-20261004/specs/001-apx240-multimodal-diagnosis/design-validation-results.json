@@ -1,0 +1,120 @@
+{
+  "scope": "documentation checks only; no application tasks/tests executed",
+  "task_count": 94,
+  "task_ids_sequential": true,
+  "all_tasks_unchecked": true,
+  "parallel_tasks": 49,
+  "dependency_errors": [],
+  "coverage_count": 56,
+  "requirement_count": 56,
+  "missing_requirements": [],
+  "unexpected_requirements": [],
+  "story_coverage": {
+    "US1": {
+      "implementation": [
+        "T027",
+        "T029",
+        "T032",
+        "T033",
+        "T034",
+        "T040",
+        "T041",
+        "T042",
+        "T046"
+      ],
+      "acceptance": [
+        "T043",
+        "T044",
+        "T045"
+      ]
+    },
+    "US7": {
+      "implementation": [
+        "T028",
+        "T030"
+      ],
+      "acceptance": [
+        "T031",
+        "T070",
+        "T071"
+      ]
+    },
+    "US6": {
+      "implementation": [
+        "T035",
+        "T036",
+        "T037",
+        "T039",
+        "T066"
+      ],
+      "acceptance": [
+        "T038",
+        "T067"
+      ]
+    },
+    "US2": {
+      "implementation": [
+        "T047",
+        "T048",
+        "T050"
+      ],
+      "acceptance": [
+        "T049"
+      ]
+    },
+    "US4": {
+      "implementation": [
+        "T051",
+        "T052",
+        "T054"
+      ],
+      "acceptance": [
+        "T053"
+      ]
+    },
+    "US3": {
+      "implementation": [
+        "T055",
+        "T056",
+        "T057",
+        "T058",
+        "T059",
+        "T060",
+        "T061",
+        "T063"
+      ],
+      "acceptance": [
+        "T062"
+      ]
+    },
+    "US5": {
+      "implementation": [
+        "T073",
+        "T074",
+        "T075",
+        "T076",
+        "T077",
+        "T080"
+      ],
+      "acceptance": [
+        "T078",
+        "T079"
+      ]
+    }
+  },
+  "p1_us5_dependency_conflicts": {
+    "T043": [],
+    "T049": [],
+    "T053": [],
+    "T083": [],
+    "T084": [],
+    "T085": []
+  },
+  "original70_preserved_once": true,
+  "schema_count": 7,
+  "schemas_valid": true,
+  "archive_file_count": 14,
+  "archive_hashes_valid": true,
+  "constitution_unchanged": true,
+  "broken_markdown_links": []
+}

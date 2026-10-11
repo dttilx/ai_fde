@@ -1,0 +1,98 @@
+{
+  "scope": "design contract shape examples; no application tests executed",
+  "schema_count": 7,
+  "cases": [
+    {
+      "name": "safe report allows zero ordinary checks",
+      "schema": "diagnosis-report.schema.json",
+      "expected_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "safe report rejects ordinary checks",
+      "schema": "diagnosis-report.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "[{'instruction_id': 'i1', 'order': 1, 'text': 'Stop per approved safety rule', 'citation_ids': ['SAFE-01'], 'evidence_ids': ['ev1'], 'alarm_step_ref': None, 'required_qualification': [], 'execution_boundary': 'OBSERVATION_ONLY', 'policy_reference_ids': []}] is expected to be empty"
+      ]
+    },
+    {
+      "name": "unconfirmed cannot be known fact",
+      "schema": "diagnosis-report.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "'UNCONFIRMED' is not one of ['CONFIRMED', 'CORRECTED']"
+      ]
+    },
+    {
+      "name": "cause requires citation",
+      "schema": "diagnosis-report.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "[] should be non-empty"
+      ]
+    },
+    {
+      "name": "published needs human reviewer",
+      "schema": "diagnosis-report.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "[] should be non-empty"
+      ]
+    },
+    {
+      "name": "paused segment succeeds",
+      "schema": "job-status.schema.json",
+      "expected_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "paused is not running Job",
+      "schema": "job-status.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "'SUCCEEDED' was expected"
+      ]
+    },
+    {
+      "name": "missing external permission DENY",
+      "schema": "access-policy.schema.json",
+      "expected_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "approved mode needs basis/provider/purpose",
+      "schema": "access-policy.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "None is not of type 'string'",
+        "[] should be non-empty"
+      ]
+    },
+    {
+      "name": "waiting expert explicit public state",
+      "schema": "graph-state.schema.json",
+      "expected_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "public graph rejects credentials",
+      "schema": "graph-state.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "Additional properties are not allowed ('api_key' was unexpected)"
+      ]
+    }
+  ]
+}

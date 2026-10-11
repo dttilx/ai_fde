@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "apx240/retrieval-assessment/v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "diagnosis_run_id",
+    "retrieval_round",
+    "assessments",
+    "status"
+  ],
+  "properties": {
+    "diagnosis_run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "retrieval_round": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "assessments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "assessment_id",
+          "source_ref",
+          "citation_id",
+          "knowledge_release_id",
+          "pinned",
+          "hybrid_rank",
+          "route",
+          "status",
+          "processing_mode",
+          "actual_model",
+          "rubric_version",
+          "ranking_policy_version",
+          "relevance_level",
+          "confidence",
+          "probabilities",
+          "reason_code",
+          "usage_state",
+          "latency_ms"
+        ],
+        "properties": {
+          "assessment_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "citation_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "knowledge_release_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pinned": {
+            "type": "boolean"
+          },
+          "hybrid_rank": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "route": {
+            "enum": [
+              "REQUIRED",
+              "EVIDENCE",
+              "HISTORICAL_REFERENCE",
+              "BACKGROUND",
+              "CONFLICT_REVIEW",
+              "FOLDED",
+              "UNASSESSED"
+            ]
+          },
+          "status": {
+            "enum": [
+              "SUCCESS",
+              "PARTIAL",
+              "UNAVAILABLE",
+              "SKIPPED_POLICY",
+              "SKIPPED_BUDGET",
+              "NO_CANDIDATES",
+              "FIXTURE",
+              "CACHED"
+            ]
+          },
+          "processing_mode": {
+            "enum": [
+              "REAL",
+              "FIXTURE",
+              "RULE",
+              "HUMAN"
+            ]
+          },
+          "actual_model": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "rubric_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ranking_policy_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relevance_level": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 3
+          },
+          "confidence": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1
+          },
+          "probabilities": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          "reason_code": {
+            "type": "string",
+            "minLength": 1
+          },
+          "usage_state": {
+            "enum": [
+              "KNOWN",
+              "UNKNOWN",
+              "NOT_CALLED"
+            ]
+          },
+          "latency_ms": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "status": {
+                  "const": "FIXTURE"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "processing_mode": {
+                  "const": "FIXTURE"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "status": {
+                  "const": "SUCCESS"
+                },
+                "processing_mode": {
+                  "const": "REAL"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "actual_model": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 0
+    },
+    "status": {
+      "enum": [
+        "SUCCESS",
+        "PARTIAL",
+        "UNAVAILABLE",
+        "SKIPPED_POLICY",
+        "SKIPPED_BUDGET",
+        "NO_CANDIDATES",
+        "FIXTURE",
+        "CACHED"
+      ]
+    }
+  }
+}

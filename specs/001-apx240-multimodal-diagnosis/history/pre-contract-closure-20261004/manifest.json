@@ -1,0 +1,54 @@
+{
+  "revision": "2.1.0",
+  "files": [
+    {
+      "path": "spec.md",
+      "sha256": "cf228c7e56aa764b3412d2b1805d89bcdedf0787cdbc861fde267aa82ae94f48"
+    },
+    {
+      "path": "plan.md",
+      "sha256": "d1b6b64daa7d14fba82fd1969df1dd10f491310c94be6fc5823c927239a1b943"
+    },
+    {
+      "path": "research.md",
+      "sha256": "9a5c4699d4f5b60557efaf64baf35c112fd7d14f9a1c973ee9efb41ae58e4731"
+    },
+    {
+      "path": "data-model.md",
+      "sha256": "bdbc401f053120a3291e9e03586ab079adf519853ac7489ba9e110e392540476"
+    },
+    {
+      "path": "quickstart.md",
+      "sha256": "e95b3b15b3cbd572b2af632378d30c2ca90cbc410e41cd1b5b2323d47f87854f"
+    },
+    {
+      "path": "tasks.md",
+      "sha256": "3c5861cd11a6bbe31f3d0627e858f6a9083ef00248d5c2d59e1d771c6da6c2de"
+    },
+    {
+      "path": "privacy-review-policy.md",
+      "sha256": "3237f9ac3cc3547986fa66fc39669d3f3f5ac2b61ccbb9205e2dbc9adf2a5889"
+    },
+    {
+      "path": "integration-review.md",
+      "sha256": "325522e2db8f145af0b945c7b5245db8712dd21394f3ece4483de5d8ef687b65"
+    },
+    {
+      "path": "contracts/http-api.md",
+      "sha256": "e3145cd30dfd0ea8f02f58d0aac14f38f1f882ee2238e32a6789954ee706fc2a"
+    },
+    {
+      "path": "contracts/diagnosis-report.schema.json",
+      "sha256": "7e7600269819a29836f34a85d9e5172f0793bacaf9b05d7350e547bfd11dc5b2"
+    },
+    {
+      "path": "contracts/jev-payload.schema.json",
+      "sha256": "d3be66cfd414698c0fee4dc58c7161bf94ecfd883806c93d424d1ddbd93f5e12"
+    },
+    {
+      "path": "root-architecture.md",
+      "original_workspace_path": "APX-240-Agent-架构设计方案.md",
+      "sha256": "88e5ba3b933fc253b0b5881ad7853cd4cea26d15edb5086242a55bd0ace16fd0"
+    }
+  ]
+}

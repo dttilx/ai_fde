@@ -1,0 +1,268 @@
+{
+  "revision": "2.1.0",
+  "scope": "design schema-shape examples only; no backend application/provider/privacy transport tests executed; free excerpt residual-sensitive detection and semantic proof need runtime validation",
+  "schema_count": 8,
+  "cases": [
+    {
+      "name": "pending report valid, not publication",
+      "schema": "diagnosis-report.schema.json",
+      "expected_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "auto advisory needs proof refs, no mandatory human reviewer",
+      "schema": "diagnosis-report.schema.json",
+      "expected_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "auto without proof refs rejected",
+      "schema": "diagnosis-report.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "[] should be non-empty",
+        "[] should be non-empty"
+      ]
+    },
+    {
+      "name": "auto dangerous report rejected",
+      "schema": "diagnosis-report.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "[] should be non-empty",
+        "True was expected",
+        "False was expected"
+      ]
+    },
+    {
+      "name": "auto escalation rejected",
+      "schema": "diagnosis-report.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "[] should be non-empty",
+        "False was expected"
+      ]
+    },
+    {
+      "name": "auto missing required information rejected",
+      "schema": "diagnosis-report.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "[{'question_id': 'sample', 'text': 'sample', 'reason': 'sample', 'citation_ids': [], 'related_evidence_ids': []}] is expected to be empty"
+      ]
+    },
+    {
+      "name": "pending review cannot publish",
+      "schema": "diagnosis-report.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "'PENDING_REVIEW' is not one of ['AUTO_VALIDATED', 'HUMAN_REVIEWED']",
+        "[] should be non-empty",
+        "'PUBLISHED' is not one of ['DRAFT', 'WITHHELD']"
+      ]
+    },
+    {
+      "name": "human reviewed report valid",
+      "schema": "diagnosis-report.schema.json",
+      "expected_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "human publication without reviewer rejected",
+      "schema": "diagnosis-report.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "[] should be non-empty"
+      ]
+    },
+    {
+      "name": "unconfirmed known fact rejected",
+      "schema": "diagnosis-report.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "'UNCONFIRMED' is not one of ['CONFIRMED', 'CORRECTED']"
+      ]
+    },
+    {
+      "name": "uncited cause rejected",
+      "schema": "diagnosis-report.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "[] should be non-empty"
+      ]
+    },
+    {
+      "name": "safe report empty ordinary checks valid",
+      "schema": "diagnosis-report.schema.json",
+      "expected_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "safe report ordinary checks rejected",
+      "schema": "diagnosis-report.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "[{'instruction_id': 'sample', 'order': 1, 'text': 'sample', 'citation_ids': ['sample'], 'evidence_ids': [], 'alarm_step_ref': 'sample', 'required_qualification': [], 'execution_boundary': 'OBSERVATION_ONLY', 'policy_reference_ids': []}] is expected to be empty"
+      ]
+    },
+    {
+      "name": "paused diagnosis Job valid",
+      "schema": "job-status.schema.json",
+      "expected_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "running PAUSED Job rejected",
+      "schema": "job-status.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "'SUCCEEDED' was expected"
+      ]
+    },
+    {
+      "name": "case publication Job valid",
+      "schema": "job-status.schema.json",
+      "expected_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "case publication cannot be graph PAUSED",
+      "schema": "job-status.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "'DIAGNOSIS' was expected"
+      ]
+    },
+    {
+      "name": "minimal technical Jev payload shape valid",
+      "schema": "jev-payload.schema.json",
+      "expected_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "Jev rejects extra raw_description",
+      "schema": "jev-payload.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "Additional properties are not allowed ('raw_description' was unexpected)"
+      ]
+    },
+    {
+      "name": "Jev rejects extra customer_name",
+      "schema": "jev-payload.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "Additional properties are not allowed ('customer_name' was unexpected)"
+      ]
+    },
+    {
+      "name": "Jev rejects extra serial_number",
+      "schema": "jev-payload.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "Additional properties are not allowed ('serial_number' was unexpected)"
+      ]
+    },
+    {
+      "name": "Jev rejects extra qr_value",
+      "schema": "jev-payload.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "Additional properties are not allowed ('qr_value' was unexpected)"
+      ]
+    },
+    {
+      "name": "Jev rejects extra media_url",
+      "schema": "jev-payload.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "Additional properties are not allowed ('media_url' was unexpected)"
+      ]
+    },
+    {
+      "name": "Jev rejects extra checkpoint",
+      "schema": "jev-payload.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "Additional properties are not allowed ('checkpoint' was unexpected)"
+      ]
+    },
+    {
+      "name": "Jev rejects extra contract",
+      "schema": "jev-payload.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "Additional properties are not allowed ('contract' was unexpected)"
+      ]
+    },
+    {
+      "name": "Jev oversized excerpt rejected",
+      "schema": "jev-payload.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' is too long"
+      ]
+    },
+    {
+      "name": "Jev reading-unit mismatch rejected",
+      "schema": "jev-payload.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "'C' was expected"
+      ]
+    },
+    {
+      "name": "Jev arbitrary question text rejected",
+      "schema": "jev-payload.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "{'type': 'score', 'instructions': 'Using only state.facts and state.sources, rate technical relevance to this incident; historical similarity never confirms the current root cause.', 'criteria': ['Unrelated', 'Background only', 'Useful technical or historical reference', 'Directly relevant source evidence']} was expected"
+      ]
+    },
+    {
+      "name": "support question missing claim rejected",
+      "schema": "jev-payload.schema.json",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "'claim' is a required property"
+      ]
+    },
+    {
+      "name": "support question with technical claim shape valid",
+      "schema": "jev-payload.schema.json",
+      "expected_valid": true,
+      "passed": true,
+      "errors": []
+    }
+  ],
+  "passed": 30
+}

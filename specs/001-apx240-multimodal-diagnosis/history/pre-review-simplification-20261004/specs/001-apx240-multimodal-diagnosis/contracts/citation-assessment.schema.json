@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "apx240/citation-assessment/v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "assessment_id",
+    "diagnosis_run_id",
+    "report_version_id",
+    "claim_id",
+    "assessed_text_hash",
+    "citation_ids",
+    "evidence_ids",
+    "relation",
+    "status",
+    "processing_mode",
+    "actual_model",
+    "confidence",
+    "rubric_version",
+    "human_review_ref",
+    "requires_human_review"
+  ],
+  "properties": {
+    "assessment_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "diagnosis_run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "report_version_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "assessed_text_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "citation_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "relation": {
+      "enum": [
+        "SUPPORTS",
+        "CONTRADICTS",
+        "UNSUPPORTED",
+        "UNKNOWN",
+        null
+      ]
+    },
+    "status": {
+      "enum": [
+        "SUCCESS",
+        "PARTIAL",
+        "UNAVAILABLE",
+        "SKIPPED_POLICY",
+        "SKIPPED_BUDGET",
+        "NO_CANDIDATES",
+        "FIXTURE",
+        "CACHED"
+      ]
+    },
+    "processing_mode": {
+      "enum": [
+        "REAL",
+        "FIXTURE",
+        "RULE",
+        "HUMAN"
+      ]
+    },
+    "actual_model": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "confidence": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "rubric_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "human_review_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "requires_human_review": {
+      "type": "boolean"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "FIXTURE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "processing_mode": {
+            "const": "FIXTURE"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "SUCCESS"
+          },
+          "processing_mode": {
+            "const": "REAL"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "actual_model": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "apx240/internal-graph-state/v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "diagnosis_run_id",
+    "graph_thread_id",
+    "state",
+    "checkpoint_version",
+    "evidence_snapshot_id",
+    "fixed_scope_id",
+    "budget_ledger_id",
+    "counters",
+    "citation_ids",
+    "retrieval_result_ids",
+    "pending_action_ids",
+    "report_version_id",
+    "manifest_ref",
+    "last_safety_decision_ref"
+  ],
+  "properties": {
+    "diagnosis_run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "graph_thread_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "state": {
+      "enum": [
+        "PREPARING",
+        "SAFETY_CHECK",
+        "RETRIEVING",
+        "NEEDS_INFORMATION",
+        "WAITING_EXPERT",
+        "CONFLICT_BLOCKED",
+        "FINALIZING",
+        "COMPLETED",
+        "ESCALATED",
+        "FAILED"
+      ]
+    },
+    "checkpoint_version": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "evidence_snapshot_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fixed_scope_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "budget_ledger_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "counters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "steps",
+        "retrieval_rounds",
+        "distinct_questions",
+        "tool_calls",
+        "aggregate_tokens",
+        "resumes",
+        "active_seconds"
+      ],
+      "properties": {
+        "steps": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "retrieval_rounds": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "distinct_questions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tool_calls": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "aggregate_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "resumes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "active_seconds": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "citation_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "retrieval_result_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "pending_action_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "report_version_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "manifest_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "last_safety_decision_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "title": "InternalLangGraphState; restricted, never an HTTP response"
+}

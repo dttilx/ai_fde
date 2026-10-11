@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "apx240/access-policy/v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "policy_binding_id",
+    "classification",
+    "scope_kind",
+    "policy_version",
+    "egress_mode",
+    "allowed_providers",
+    "allowed_purposes",
+    "permission_basis_ref",
+    "valid_until",
+    "lineage_resource_ids"
+  ],
+  "properties": {
+    "policy_binding_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "classification": {
+      "enum": [
+        "TECHNICAL_REFERENCE",
+        "FIELD_RECORD"
+      ]
+    },
+    "scope_kind": {
+      "enum": [
+        "ORGANIZATION_REFERENCE",
+        "EVENT_MEMBERS",
+        "EXPLICIT_GRANTS"
+      ]
+    },
+    "policy_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "egress_mode": {
+      "enum": [
+        "DENY",
+        "APPROVED_REDACTED",
+        "APPROVED_RAW"
+      ]
+    },
+    "allowed_providers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "allowed_purposes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "permission_basis_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "valid_until": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "lineage_resource_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "egress_mode": {
+            "enum": [
+              "APPROVED_REDACTED",
+              "APPROVED_RAW"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "permission_basis_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "allowed_providers": {
+            "minItems": 1
+          },
+          "allowed_purposes": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

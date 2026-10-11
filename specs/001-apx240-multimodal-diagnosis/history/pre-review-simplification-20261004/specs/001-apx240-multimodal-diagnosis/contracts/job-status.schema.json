@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "apx240/job-status/v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "job_id",
+    "kind",
+    "status",
+    "attempt",
+    "deadline_at",
+    "idempotency_key",
+    "error_code",
+    "result_ref",
+    "result_kind",
+    "parent_job_id",
+    "processing_mode",
+    "status_version"
+  ],
+  "properties": {
+    "job_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "enum": [
+        "MEDIA_SCAN",
+        "OCR",
+        "VISION",
+        "QR",
+        "VIDEO",
+        "DIAGNOSIS"
+      ]
+    },
+    "status": {
+      "enum": [
+        "QUEUED",
+        "RUNNING",
+        "SUCCEEDED",
+        "FAILED",
+        "TIMED_OUT",
+        "CANCELLED",
+        "RETRY_WAIT"
+      ]
+    },
+    "attempt": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "deadline_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "error_code": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "result_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "result_kind": {
+      "enum": [
+        "PAUSED",
+        "COMPLETED",
+        null
+      ]
+    },
+    "parent_job_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "processing_mode": {
+      "enum": [
+        "REAL",
+        "FIXTURE",
+        "LOCAL",
+        "MIXED"
+      ]
+    },
+    "status_version": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "FAILED",
+              "TIMED_OUT"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "error_code": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "result_kind": {
+            "const": "PAUSED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "SUCCEEDED"
+          },
+          "kind": {
+            "const": "DIAGNOSIS"
+          },
+          "result_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "DIAGNOSIS"
+          },
+          "status": {
+            "const": "SUCCEEDED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "result_kind": {
+            "enum": [
+              "PAUSED",
+              "COMPLETED"
+            ]
+          },
+          "result_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  ]
+}

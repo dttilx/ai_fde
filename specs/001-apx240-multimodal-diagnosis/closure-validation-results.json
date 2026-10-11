@@ -1,0 +1,150 @@
+{
+  "revision": "2.2.0",
+  "scope": "Design-only schema examples and task syntax/order validation; no business execution, provider call, privacy transport, semantic accuracy or template proof tested",
+  "schema_count": 8,
+  "cases": [
+    {
+      "name": "AUTO baseline",
+      "expected_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "AUTO optional question allowed",
+      "expected_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "AUTO necessary question rejected",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "False was expected"
+      ]
+    },
+    {
+      "name": "Question classification required",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "'blocking' is a required property",
+        "'blocking' is a required property"
+      ]
+    },
+    {
+      "name": "Necessary question pending draft valid",
+      "expected_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "AUTO safety-blocked rejected",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "[] should be non-empty",
+        "True was expected",
+        "False was expected"
+      ]
+    },
+    {
+      "name": "AUTO without validation refs rejected",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "[] should be non-empty",
+        "[] should be non-empty"
+      ]
+    },
+    {
+      "name": "Jev unknown domain states shape valid",
+      "expected_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "A101 typed domain states valid",
+      "expected_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "A401 typed domain states valid",
+      "expected_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "A520 typed domain states valid",
+      "expected_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "A900 typed domain states valid",
+      "expected_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "Legacy projection rejected",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "'JEV_MINIMAL_V2' was expected"
+      ]
+    },
+    {
+      "name": "Domain-state projection required",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "'device_states' is a required property"
+      ]
+    },
+    {
+      "name": "Identity in domain projection rejected",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "Additional properties are not allowed ('serial_number' was unexpected)"
+      ]
+    },
+    {
+      "name": "Free text instead of typed state rejected",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "'probably off' is not one of ['ON', 'OFF', 'UNKNOWN']"
+      ]
+    },
+    {
+      "name": "Unapproved question instructions rejected",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "{'type': 'choice', 'instructions': 'Classify how state.sources can be used with state.facts. Preserve confirmed-current-fact conflicts; differing historical events are reference differences, not a confirmed current contradiction. Null, UNKNOWN and empty device-state fields are unknown or omitted observations, not negative facts. If required domain context is absent, do not infer irrelevance; choose an indeterminate assessment.', 'criteria': {'TECHNICAL_EVIDENCE': None, 'HISTORICAL_REFERENCE': None, 'BACKGROUND': None, 'UNRELATED': None, 'CONFLICT_REVIEW': None, 'UNKNOWN': None}} was expected"
+      ]
+    },
+    {
+      "name": "Arbitrary module IDs rejected",
+      "expected_valid": false,
+      "passed": true,
+      "errors": [
+        "'PRIVATE-ASSET-123' is not one of ['P1', 'S1', 'H1', 'H2', 'T1', 'T2', 'G1', 'PNEUMATIC', 'CONTROLLER', 'UNKNOWN']"
+      ]
+    }
+  ],
+  "task_count": 94,
+  "checked_tasks": 0,
+  "sequential_task_ids": true,
+  "dependency_errors": [],
+  "snapshot_count": 12,
+  "snapshot_hashes_match": true,
+  "source_baseline_hashes": {
+    ".specify\\memory\\constitution.md": "88ae7575214cfeb6177696a6bdb1923c915c20956ac57d23c78091d32afe88f3",
+    "FDE 实习生考试题库.docx": "a6c45f1b3df42e84b287dd0ff16475b24ab327950dd515bcb7997ad0ea851690",
+    "06题APX-240自动封装设备说明书.pdf": "ef35bdd5f505abdb5ff796b7527123c1e22c3805e5662ee64c14237fea9b92e0"
+  }
+}

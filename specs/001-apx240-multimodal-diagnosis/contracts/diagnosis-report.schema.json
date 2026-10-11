@@ -1,0 +1,834 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "apx240/diagnosis-report/v4",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_version_id",
+    "diagnosis_run_id",
+    "status",
+    "publication_status",
+    "fault_phenomenon",
+    "safety_blocked",
+    "known_facts",
+    "confirmed_observations",
+    "unconfirmed_information",
+    "contradictions",
+    "manual_references",
+    "possible_causes",
+    "historical_comparisons",
+    "evidence_sources",
+    "policy_references",
+    "immediate_safety_actions",
+    "safety_preconditions",
+    "check_sequence",
+    "missing_information",
+    "stop_conditions",
+    "escalation_reasons",
+    "escalate_expert",
+    "evidence_sufficiency",
+    "limitations",
+    "claim_review_ids",
+    "reviewer_ids",
+    "release_mode",
+    "release_policy_version",
+    "release_decision_id",
+    "validation_check_ids"
+  ],
+  "properties": {
+    "report_version_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "diagnosis_run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "FINALIZING",
+        "COMPLETED",
+        "NEEDS_INFORMATION",
+        "WAITING_EXPERT",
+        "CONFLICT_BLOCKED",
+        "ESCALATED",
+        "FAILED"
+      ]
+    },
+    "publication_status": {
+      "enum": [
+        "DRAFT",
+        "PUBLISHED",
+        "WITHHELD"
+      ]
+    },
+    "fault_phenomenon": {
+      "type": "string",
+      "minLength": 1
+    },
+    "safety_blocked": {
+      "type": "boolean"
+    },
+    "known_facts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/fact"
+      },
+      "minItems": 0
+    },
+    "confirmed_observations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/fact"
+      },
+      "minItems": 0
+    },
+    "unconfirmed_information": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/unknown"
+      },
+      "minItems": 0
+    },
+    "contradictions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/contradiction"
+      },
+      "minItems": 0
+    },
+    "manual_references": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/manual"
+      },
+      "minItems": 0
+    },
+    "possible_causes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/cause"
+      },
+      "minItems": 0
+    },
+    "historical_comparisons": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/comparison"
+      },
+      "minItems": 0
+    },
+    "evidence_sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/citation"
+      },
+      "minItems": 0
+    },
+    "policy_references": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/policyRef"
+      },
+      "minItems": 0
+    },
+    "immediate_safety_actions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/instruction"
+      },
+      "minItems": 0
+    },
+    "safety_preconditions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/instruction"
+      },
+      "minItems": 0
+    },
+    "check_sequence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/instruction"
+      },
+      "minItems": 0
+    },
+    "missing_information": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/question"
+      },
+      "minItems": 0
+    },
+    "stop_conditions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/instruction"
+      },
+      "minItems": 0
+    },
+    "escalation_reasons": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/instruction"
+      },
+      "minItems": 0
+    },
+    "escalate_expert": {
+      "type": "boolean"
+    },
+    "evidence_sufficiency": {
+      "enum": [
+        "SUFFICIENT_FOR_POSSIBILITIES",
+        "NEEDS_INFORMATION",
+        "CONFLICTED",
+        "NO_COVERAGE",
+        "SAFETY_STOP"
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "claim_review_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "reviewer_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "release_mode": {
+      "enum": [
+        "AUTO_VALIDATED",
+        "HUMAN_REVIEWED",
+        "PENDING_REVIEW"
+      ]
+    },
+    "release_policy_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "release_decision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "validation_check_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  },
+  "$defs": {
+    "citation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "citation_id",
+        "source_type",
+        "source_ref",
+        "knowledge_release_id",
+        "locator",
+        "excerpt",
+        "checksum"
+      ],
+      "properties": {
+        "citation_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_type": {
+          "enum": [
+            "SAFETY_RULE",
+            "ALARM_CODE",
+            "MANUAL",
+            "HISTORICAL_CASE",
+            "MAINTENANCE_RECORD",
+            "APPROVED_CASE"
+          ]
+        },
+        "source_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "knowledge_release_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "excerpt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "checksum": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "instruction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "instruction_id",
+        "order",
+        "text",
+        "citation_ids",
+        "evidence_ids",
+        "alarm_step_ref",
+        "required_qualification",
+        "execution_boundary",
+        "policy_reference_ids"
+      ],
+      "properties": {
+        "instruction_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "citation_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "alarm_step_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "required_qualification": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "ELECTRICAL",
+              "MECHANICAL"
+            ]
+          },
+          "minItems": 0
+        },
+        "execution_boundary": {
+          "enum": [
+            "OBSERVATION_ONLY",
+            "AUTHORIZED_PERSONNEL_REQUIRED",
+            "SERVICE_CONFIRMATION_REQUIRED"
+          ]
+        },
+        "policy_reference_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        }
+      }
+    },
+    "fact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "evidence_version_ids",
+        "status"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_version_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "status": {
+          "enum": [
+            "CONFIRMED",
+            "CORRECTED"
+          ]
+        }
+      }
+    },
+    "unknown": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "source_refs",
+        "reason"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "contradiction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "evidence_version_ids",
+        "citation_ids",
+        "resolution_state",
+        "resolution_ref"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_version_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "citation_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "resolution_state": {
+          "enum": [
+            "UNRESOLVED",
+            "RESOLVED"
+          ]
+        },
+        "resolution_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "manual": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "citation_ids"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "citation_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "cause": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claim_id",
+        "rank",
+        "cause",
+        "status",
+        "citation_ids",
+        "supporting_evidence_ids",
+        "counter_evidence_ids",
+        "missing_evidence",
+        "ranking_reason"
+      ],
+      "properties": {
+        "claim_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rank": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "cause": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "const": "POSSIBLE"
+        },
+        "citation_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "supporting_evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "counter_evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "missing_evidence": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "ranking_reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "citation_ids",
+        "current_evidence_ids",
+        "same_points",
+        "different_points",
+        "missing_information",
+        "effect_on_diagnosis"
+      ],
+      "properties": {
+        "citation_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "current_evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "same_points": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "different_points": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "missing_information": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "effect_on_diagnosis": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "policyRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_reference_id",
+        "kind",
+        "version",
+        "basis_ref"
+      ],
+      "properties": {
+        "policy_reference_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "QUALIFICATION",
+            "WARRANTY",
+            "SERVICE_RESTRICTION",
+            "ACCESS_POLICY"
+          ]
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "basis_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "question_id",
+        "text",
+        "reason",
+        "citation_ids",
+        "related_evidence_ids",
+        "blocking"
+      ],
+      "properties": {
+        "question_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "citation_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "related_evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "blocking": {
+          "type": "boolean",
+          "description": "Server-derived: true when missing information affects safety, source coverage, contradiction resolution, authorization, cause applicability or the next permissible action. False only for genuinely optional contextual information. Not a model-controlled bypass."
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "safety_blocked": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "check_sequence": {
+            "maxItems": 0
+          },
+          "immediate_safety_actions": {
+            "minItems": 1
+          },
+          "escalate_expert": {
+            "const": true
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "escalate_expert": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "escalation_reasons": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "publication_status": {
+            "const": "PUBLISHED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "release_mode": {
+            "enum": [
+              "AUTO_VALIDATED",
+              "HUMAN_REVIEWED"
+            ]
+          },
+          "validation_check_ids": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "release_mode": {
+            "const": "HUMAN_REVIEWED"
+          },
+          "publication_status": {
+            "const": "PUBLISHED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reviewer_ids": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "release_mode": {
+            "const": "AUTO_VALIDATED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "COMPLETED"
+          },
+          "publication_status": {
+            "const": "PUBLISHED"
+          },
+          "safety_blocked": {
+            "const": false
+          },
+          "escalate_expert": {
+            "const": false
+          },
+          "contradictions": {
+            "maxItems": 0
+          },
+          "missing_information": {
+            "items": {
+              "properties": {
+                "blocking": {
+                  "const": false
+                }
+              },
+              "required": [
+                "blocking"
+              ]
+            }
+          },
+          "validation_check_ids": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "release_mode": {
+            "const": "PENDING_REVIEW"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "publication_status": {
+            "enum": [
+              "DRAFT",
+              "WITHHELD"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+import { test, expect } from "@playwright/test";
+import { readFileSync } from "node:fs";
+import path from "node:path";
+
+test("A310 accepts partial facts and resumes the same persisted diagnosis", async ({ page }) => {
+  const credentials = JSON.parse(readFileSync(path.resolve("../.private/demo-credentials.json"), "utf8"));
+  await page.goto("/");
+  await page.getByLabel("密码", { exact: true }).fill(credentials.engineer.password);
+  await page.getByRole("button", { name: "登录工作台 →" }).click();
+  await page.getByLabel("描述现象与现场读数").fill("A310，似乎漏气");
+  await page.getByRole("button", { name: "创建事件并开始诊断 →" }).click();
+  await expect(page.getByRole("heading", { name: "需要补充现场事实" })).toBeVisible({ timeout: 15000 });
+  const original = page.url();
+  const submit = page.getByRole("button", { name: "提交事实并恢复 →" });
+  await expect(submit).toBeDisabled();
+  await page.getByLabel("上游压力（MPa）").fill("0.64");
+  await submit.click();
+  await expect(page.getByLabel("上游压力（MPa）")).toHaveCount(0);
+  await expect(page.getByLabel("设备端压力（MPa）")).toBeVisible();
+  await expect(page.getByLabel("是否有持续漏气声")).toHaveValue("");
+  expect(page.url()).toBe(original);
+  await page.getByLabel("设备端压力（MPa）").fill("0.41");
+  await page.getByLabel("是否有持续漏气声").selectOption("true");
+  await submit.click();
+  await expect(page.getByText("报告已发布", { exact: true })).toBeVisible({ timeout: 15000 });
+  expect(page.url()).toBe(original);
+  await expect(page.getByRole("heading", { name: "下游管路泄漏" })).toBeVisible();
+  await expect(page.getByText(/未确认项：最终根因和具体泄漏部位未确认/)).toBeVisible();
+  await expect(page.getByRole("button", { name: "接受当前报告并恢复 →" })).toHaveCount(0);
+});

@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "apx240/citation-assessment/v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "diagnosis_run_id",
+    "assessments"
+  ],
+  "properties": {
+    "diagnosis_run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "report_version_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "assessments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "report_version_id",
+          "report_hash",
+          "claim_id",
+          "claim_hash",
+          "citation_ids",
+          "relation",
+          "mode",
+          "status",
+          "review_required",
+          "evidence_snapshot_hash",
+          "scope",
+          "historical_reference_ids"
+        ],
+        "properties": {
+          "report_version_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "report_hash": {
+            "type": "string",
+            "minLength": 1
+          },
+          "claim_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "claim_hash": {
+            "type": "string",
+            "minLength": 1
+          },
+          "citation_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "relation": {
+            "enum": [
+              "SUPPORTED",
+              "CONTRADICTS",
+              "UNSUPPORTED",
+              "UNKNOWN"
+            ]
+          },
+          "mode": {
+            "enum": [
+              "RULE",
+              "HUMAN",
+              "NOT_CALLED",
+              "REAL_JEV",
+              "FIXTURE"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "minLength": 1
+          },
+          "review_required": {
+            "type": "boolean"
+          },
+          "evidence_snapshot_hash": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "historical_reference_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

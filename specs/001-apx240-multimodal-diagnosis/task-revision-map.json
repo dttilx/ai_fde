@@ -1,0 +1,477 @@
+{
+  "revision": "2.1.0",
+  "original_task_count": 70,
+  "current_task_count": 94,
+  "tasks": [
+    {
+      "current": "T001",
+      "origin": "T001",
+      "coverage": "FR-036"
+    },
+    {
+      "current": "T002",
+      "origin": "T002",
+      "coverage": "FR-001"
+    },
+    {
+      "current": "T003",
+      "origin": "T003",
+      "coverage": "FR-036"
+    },
+    {
+      "current": "T004",
+      "origin": "T004",
+      "coverage": "FR-039"
+    },
+    {
+      "current": "T005",
+      "origin": "T005",
+      "coverage": "FR-036"
+    },
+    {
+      "current": "T006",
+      "origin": "T006",
+      "coverage": "FR-036 FR-037"
+    },
+    {
+      "current": "T007",
+      "origin": "T007",
+      "coverage": "FR-018 FR-021 FR-037"
+    },
+    {
+      "current": "T008",
+      "origin": "T008",
+      "coverage": "FR-017 FR-039"
+    },
+    {
+      "current": "T009",
+      "origin": "NEW:MODELS",
+      "coverage": "FR-025 FR-026 FR-028 FR-029"
+    },
+    {
+      "current": "T010",
+      "origin": "T009",
+      "coverage": "FR-002 FR-026"
+    },
+    {
+      "current": "T011",
+      "origin": "T010",
+      "coverage": "FR-003 FR-009 FR-023 FR-024"
+    },
+    {
+      "current": "T012",
+      "origin": "NEW:EGRESS",
+      "coverage": "FR-025 FR-027 FR-028 FR-037 FR-041"
+    },
+    {
+      "current": "T013",
+      "origin": "T011",
+      "coverage": "FR-039"
+    },
+    {
+      "current": "T014",
+      "origin": "T012",
+      "coverage": "FR-039"
+    },
+    {
+      "current": "T015",
+      "origin": "NEW:SESSION",
+      "coverage": "FR-026 FR-029"
+    },
+    {
+      "current": "T016",
+      "origin": "T013",
+      "coverage": "FR-026 FR-029"
+    },
+    {
+      "current": "T017",
+      "origin": "T014",
+      "coverage": "FR-017 FR-018"
+    },
+    {
+      "current": "T018",
+      "origin": "NEW:BUDGET",
+      "coverage": "FR-012 FR-013 FR-018 FR-034 FR-039"
+    },
+    {
+      "current": "T019",
+      "origin": "T015",
+      "coverage": "FR-009 FR-032 FR-037"
+    },
+    {
+      "current": "T020",
+      "origin": "T016",
+      "coverage": "FR-009 FR-018"
+    },
+    {
+      "current": "T021",
+      "origin": "NEW:SOURCEPOLICY",
+      "coverage": "FR-025 FR-027 FR-028 FR-032 FR-037"
+    },
+    {
+      "current": "T022",
+      "origin": "T017",
+      "coverage": "FR-007 FR-032"
+    },
+    {
+      "current": "T023",
+      "origin": "T018",
+      "coverage": "FR-007 FR-015 FR-038"
+    },
+    {
+      "current": "T024",
+      "origin": "T019",
+      "coverage": "FR-012 FR-018 FR-034"
+    },
+    {
+      "current": "T025",
+      "origin": "T020",
+      "coverage": "FR-007 FR-039"
+    },
+    {
+      "current": "T026",
+      "origin": "NEW:AUTHTEST",
+      "coverage": "FR-025 FR-026 FR-028 FR-029 SC-017"
+    },
+    {
+      "current": "T027",
+      "origin": "T021",
+      "coverage": "FR-001 FR-006 FR-025 FR-030"
+    },
+    {
+      "current": "T028",
+      "origin": "NEW:WARRANTY",
+      "coverage": "FR-029 FR-030"
+    },
+    {
+      "current": "T029",
+      "origin": "T022",
+      "coverage": "FR-038 FR-001 FR-006 FR-026"
+    },
+    {
+      "current": "T030",
+      "origin": "NEW:SCOPE",
+      "coverage": "FR-025 FR-026 FR-027 FR-029 FR-030 FR-034"
+    },
+    {
+      "current": "T031",
+      "origin": "NEW:SCOPETEST",
+      "coverage": "FR-025 FR-026 FR-027 FR-029 FR-030 SC-012 SC-013"
+    },
+    {
+      "current": "T032",
+      "origin": "T023",
+      "coverage": "FR-016 FR-017 FR-018 FR-034"
+    },
+    {
+      "current": "T033",
+      "origin": "T024",
+      "coverage": "FR-006 FR-008 FR-031"
+    },
+    {
+      "current": "T034",
+      "origin": "T025",
+      "coverage": "FR-009 FR-010 FR-027"
+    },
+    {
+      "current": "T035",
+      "origin": "NEW:ASSESSMODELS",
+      "coverage": "FR-018 FR-023 FR-024 FR-033"
+    },
+    {
+      "current": "T036",
+      "origin": "NEW:ASSESS",
+      "coverage": "FR-023 FR-024 FR-027 FR-028 FR-031 FR-033 FR-039"
+    },
+    {
+      "current": "T037",
+      "origin": "NEW:ASSESSUI",
+      "coverage": "FR-023 FR-024 FR-026 SC-014"
+    },
+    {
+      "current": "T038",
+      "origin": "NEW:ASSESSTEST",
+      "coverage": "FR-023 FR-024 FR-027 FR-028 FR-031 FR-033 FR-039 SC-013 SC-014"
+    },
+    {
+      "current": "T039",
+      "origin": "NEW:CLAIM",
+      "coverage": "FR-008 FR-011 FR-031 FR-033 FR-042"
+    },
+    {
+      "current": "T040",
+      "origin": "T026",
+      "coverage": "FR-012 FR-013 FR-034 FR-039"
+    },
+    {
+      "current": "T041",
+      "origin": "T027",
+      "coverage": "FR-011 FR-016 FR-031 FR-033 FR-042"
+    },
+    {
+      "current": "T042",
+      "origin": "T028",
+      "coverage": "FR-026 FR-034 FR-039"
+    },
+    {
+      "current": "T043",
+      "origin": "T029",
+      "coverage": "SC-001 SC-005 SC-007 SC-018"
+    },
+    {
+      "current": "T044",
+      "origin": "NEW:HISTTEST",
+      "coverage": "FR-008 FR-010 FR-011 FR-016 FR-031 FR-033 FR-042 SC-005"
+    },
+    {
+      "current": "T045",
+      "origin": "T030",
+      "coverage": "FR-015 FR-021"
+    },
+    {
+      "current": "T046",
+      "origin": "T031",
+      "coverage": "FR-016 FR-042 SC-007"
+    },
+    {
+      "current": "T047",
+      "origin": "T032",
+      "coverage": "FR-007 FR-015 FR-038"
+    },
+    {
+      "current": "T048",
+      "origin": "T033",
+      "coverage": "FR-007 FR-029 FR-030"
+    },
+    {
+      "current": "T049",
+      "origin": "T034",
+      "coverage": "FR-007 FR-022 FR-038 SC-003 SC-018"
+    },
+    {
+      "current": "T050",
+      "origin": "T035",
+      "coverage": "SC-003 SC-009"
+    },
+    {
+      "current": "T051",
+      "origin": "T036",
+      "coverage": "FR-014 SC-002 SC-006"
+    },
+    {
+      "current": "T052",
+      "origin": "T037",
+      "coverage": "FR-014 FR-034"
+    },
+    {
+      "current": "T053",
+      "origin": "T038",
+      "coverage": "SC-002 SC-006 FR-034"
+    },
+    {
+      "current": "T054",
+      "origin": "T039",
+      "coverage": "FR-014 SC-009"
+    },
+    {
+      "current": "T055",
+      "origin": "T040",
+      "coverage": "FR-002 FR-003 FR-040"
+    },
+    {
+      "current": "T056",
+      "origin": "T041",
+      "coverage": "FR-002 FR-040"
+    },
+    {
+      "current": "T057",
+      "origin": "T042",
+      "coverage": "FR-003 FR-021"
+    },
+    {
+      "current": "T058",
+      "origin": "T043",
+      "coverage": "FR-005"
+    },
+    {
+      "current": "T059",
+      "origin": "T044",
+      "coverage": "FR-003 FR-040"
+    },
+    {
+      "current": "T060",
+      "origin": "T045",
+      "coverage": "FR-004 FR-017 FR-040 FR-042"
+    },
+    {
+      "current": "T061",
+      "origin": "T046",
+      "coverage": "FR-004 FR-006 FR-034"
+    },
+    {
+      "current": "T062",
+      "origin": "T047",
+      "coverage": "FR-040 SC-004 SC-010 SC-018"
+    },
+    {
+      "current": "T063",
+      "origin": "T048",
+      "coverage": "FR-002 FR-004 FR-040"
+    },
+    {
+      "current": "T064",
+      "origin": "T049",
+      "coverage": "FR-011 FR-028 FR-036"
+    },
+    {
+      "current": "T065",
+      "origin": "T050",
+      "coverage": "FR-009 FR-027 FR-028"
+    },
+    {
+      "current": "T066",
+      "origin": "NEW:REALJEV",
+      "coverage": "FR-023 FR-024 FR-028 FR-033 FR-036 FR-041"
+    },
+    {
+      "current": "T067",
+      "origin": "NEW:REALTEST",
+      "coverage": "FR-023 FR-024 FR-033 FR-036 SC-013 SC-014 SC-016 SC-017"
+    },
+    {
+      "current": "T068",
+      "origin": "T051",
+      "coverage": "FR-018 FR-026"
+    },
+    {
+      "current": "T069",
+      "origin": "T052",
+      "coverage": "FR-013 FR-021 FR-034 FR-039"
+    },
+    {
+      "current": "T070",
+      "origin": "NEW:ALLACCESS",
+      "coverage": "FR-025 FR-026 FR-027 FR-028 FR-034 FR-037 SC-012 SC-013 SC-017"
+    },
+    {
+      "current": "T071",
+      "origin": "NEW:QUALTEST",
+      "coverage": "FR-029 FR-030 FR-034 SC-011 SC-012"
+    },
+    {
+      "current": "T072",
+      "origin": "NEW:ALLALARMS",
+      "coverage": "FR-007 FR-010 FR-015 FR-031 FR-032 FR-038 SC-001 SC-002 SC-003 SC-011"
+    },
+    {
+      "current": "T073",
+      "origin": "T053",
+      "coverage": "FR-017 FR-018"
+    },
+    {
+      "current": "T074",
+      "origin": "T054",
+      "coverage": "FR-015 FR-017 FR-029 FR-034"
+    },
+    {
+      "current": "T075",
+      "origin": "T055",
+      "coverage": "FR-019 FR-035"
+    },
+    {
+      "current": "T076",
+      "origin": "T056",
+      "coverage": "FR-019 FR-035"
+    },
+    {
+      "current": "T077",
+      "origin": "T057",
+      "coverage": "FR-020 FR-035 FR-042"
+    },
+    {
+      "current": "T078",
+      "origin": "T058",
+      "coverage": "SC-008 SC-015 SC-018"
+    },
+    {
+      "current": "T079",
+      "origin": "NEW:CASESCOPE",
+      "coverage": "FR-019 FR-020 FR-027 FR-035 SC-008 SC-015"
+    },
+    {
+      "current": "T080",
+      "origin": "T059",
+      "coverage": "FR-019 FR-020 FR-035"
+    },
+    {
+      "current": "T081",
+      "origin": "T060",
+      "coverage": "FR-018 SC-009"
+    },
+    {
+      "current": "T082",
+      "origin": "T061",
+      "coverage": "FR-011 FR-016 FR-026 FR-033 FR-041 FR-042"
+    },
+    {
+      "current": "T083",
+      "origin": "T062",
+      "coverage": "SC-001 SC-005 SC-007 SC-018"
+    },
+    {
+      "current": "T084",
+      "origin": "T063",
+      "coverage": "SC-003"
+    },
+    {
+      "current": "T085",
+      "origin": "T064",
+      "coverage": "SC-002 SC-006"
+    },
+    {
+      "current": "T086",
+      "origin": "T065",
+      "coverage": "SC-004 SC-010"
+    },
+    {
+      "current": "T087",
+      "origin": "T066",
+      "coverage": "SC-008 SC-015 SC-018"
+    },
+    {
+      "current": "T088",
+      "origin": "T067",
+      "coverage": "SC-009"
+    },
+    {
+      "current": "T089",
+      "origin": "T068",
+      "coverage": "FR-036 SC-016"
+    },
+    {
+      "current": "T090",
+      "origin": "T069",
+      "coverage": "FR-017 FR-018"
+    },
+    {
+      "current": "T091",
+      "origin": "NEW:OPS",
+      "coverage": "FR-017 FR-018 FR-037 FR-039"
+    },
+    {
+      "current": "T092",
+      "origin": "NEW:PERF",
+      "coverage": "FR-032 FR-036 FR-037 FR-039 SC-011 SC-014 SC-016"
+    },
+    {
+      "current": "T093",
+      "origin": "NEW:DELIVERY",
+      "coverage": "FR-036 FR-037 SC-009 SC-016"
+    },
+    {
+      "current": "T094",
+      "origin": "T070",
+      "coverage": "FR-036 FR-037 SC-009 SC-016"
+    }
+  ]
+}

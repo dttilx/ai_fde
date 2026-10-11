@@ -1,0 +1,13 @@
+.git
+.venv
+node_modules
+.next
+.private
+.env*
+*.docx
+*.pdf
+knowledge/seed
+spec-kit
+spec-kit-download
+specs
+__pycache__

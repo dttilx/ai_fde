@@ -1,0 +1,26 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+node_modules/
+.next/
+coverage/
+.env
+.env.local
+.private/
+*.log
+*.tsbuildinfo
+test-results/
+playwright-report/
+
+# Downloaded Spec Kit source is tooling, not part of the APX-240 application.
+spec-kit/
+spec-kit-download/
+spec-kit-main.zip
+# Confidential examination materials and private source-derived seeds.
+*.docx
+*.pdf
+knowledge/seed/
+Thumbs.db

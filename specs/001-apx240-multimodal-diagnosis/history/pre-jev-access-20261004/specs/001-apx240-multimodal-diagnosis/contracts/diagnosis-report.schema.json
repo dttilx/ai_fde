@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "apx240/diagnosis-report/v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "fault_phenomenon",
+    "known_facts",
+    "possible_causes",
+    "evidence_sources",
+    "safety_preconditions",
+    "check_sequence",
+    "missing_information",
+    "stop_conditions",
+    "escalate_expert",
+    "confidence"
+  ],
+  "properties": {
+    "status": {"enum": ["COMPLETED", "NEEDS_INFORMATION", "ESCALATED"]},
+    "fault_phenomenon": {"type": "string", "minLength": 1},
+    "known_facts": {"type": "array", "items": {"$ref": "#/$defs/evidenceItem"}},
+    "possible_causes": {"type": "array", "items": {"$ref": "#/$defs/possibleCause"}},
+    "evidence_sources": {"type": "array", "items": {"$ref": "#/$defs/citation"}},
+    "safety_preconditions": {"type": "array", "items": {"$ref": "#/$defs/instruction"}},
+    "check_sequence": {"type": "array", "items": {"$ref": "#/$defs/instruction"}, "minItems": 1},
+    "missing_information": {"type": "array", "items": {"type": "string"}},
+    "stop_conditions": {"type": "array", "items": {"type": "string"}},
+    "escalate_expert": {"type": "boolean"},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+  },
+  "$defs": {
+    "evidenceItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "status", "source"],
+      "properties": {
+        "text": {"type": "string", "minLength": 1},
+        "status": {"enum": ["CONFIRMED", "OBSERVED", "UNCONFIRMED", "CONTRADICTED"]},
+        "source": {"type": "string", "minLength": 1}
+      }
+    },
+    "possibleCause": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cause", "status", "citation_ids"],
+      "properties": {
+        "cause": {"type": "string", "minLength": 1},
+        "status": {"const": "POSSIBLE"},
+        "citation_ids": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+      }
+    },
+    "instruction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["order", "text", "citation_ids"],
+      "properties": {
+        "order": {"type": "integer", "minimum": 1},
+        "text": {"type": "string", "minLength": 1},
+        "citation_ids": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+      }
+    },
+    "citation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["citation_id", "source_ref", "excerpt"],
+      "properties": {
+        "citation_id": {"type": "string", "minLength": 1},
+        "source_ref": {"type": "string", "minLength": 1},
+        "excerpt": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

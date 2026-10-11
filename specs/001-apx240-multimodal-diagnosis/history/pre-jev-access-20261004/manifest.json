@@ -1,0 +1,61 @@
+{
+  "purpose": "Before merging approved Jev/access design; original artifacts preserved unchanged",
+  "files": [
+    {
+      "path": "specs/001-apx240-multimodal-diagnosis/data-model.md",
+      "sha256": "fa262a79e7a7f3a9a6a49a5ea7584c453a2e6b5953839167a1cfdd7dbdd90818"
+    },
+    {
+      "path": "specs/001-apx240-multimodal-diagnosis/design-amendment-jev-access.md",
+      "sha256": "00e0bf9caeea9b326b85d70add75c7f63f7be265bc63501046fd47a75c402ae8"
+    },
+    {
+      "path": "specs/001-apx240-multimodal-diagnosis/plan.md",
+      "sha256": "c4180dee683d83c609ebe95c6a91bbc734ce4651c1a3344b956bc756fbf9d70c"
+    },
+    {
+      "path": "specs/001-apx240-multimodal-diagnosis/quickstart.md",
+      "sha256": "ab57e625bf2161573ee733d4121e7e3396f3d16448132e76a2c078b775f6daf6"
+    },
+    {
+      "path": "specs/001-apx240-multimodal-diagnosis/research.md",
+      "sha256": "7ddfb2310afe3cab22ca27bfa8bf037f57fe32a5a598e034a76ab8facb56fad0"
+    },
+    {
+      "path": "specs/001-apx240-multimodal-diagnosis/spec.md",
+      "sha256": "2cfa65bf7c9150d838b2f94c28c5d7efcb57edb212f821b00c3b57aecdf1b951"
+    },
+    {
+      "path": "specs/001-apx240-multimodal-diagnosis/tasks.md",
+      "sha256": "e602828905af91623c2b415a4b6629997728502e37452a323c281b08149c51f4"
+    },
+    {
+      "path": "specs/001-apx240-multimodal-diagnosis/checklists/requirements.md",
+      "sha256": "4a0686f398f952931a1d46925aac57e03c1757c79b3ad145c4a76359237c867c"
+    },
+    {
+      "path": "specs/001-apx240-multimodal-diagnosis/contracts/diagnosis-report.schema.json",
+      "sha256": "d2e38394f1d6b7d4bd419862d93a631d20d272b839a0f0465db08a06dc831147"
+    },
+    {
+      "path": "specs/001-apx240-multimodal-diagnosis/contracts/graph-state.schema.json",
+      "sha256": "b9fafa3384b91a780700b7a1ec0d05a0c4942da94b2d3a1457a5baad5aa8b256"
+    },
+    {
+      "path": "specs/001-apx240-multimodal-diagnosis/contracts/http-api.md",
+      "sha256": "6b29f561a7bf7192fefc807663ac1096e63ab47e7053e042592cc5601830fd0b"
+    },
+    {
+      "path": "specs/001-apx240-multimodal-diagnosis/contracts/job-status.schema.json",
+      "sha256": "a9df4570db79fd141401a751407c099b4ee7bee4f14dfd67182b282108b31db4"
+    },
+    {
+      "path": "APX-240-Agent-架构设计方案.md",
+      "sha256": "e6de0b214e481140a74854d14d539f0d8901727131b6739dc9c837473f647b52"
+    },
+    {
+      "path": ".specify/memory/constitution.md",
+      "sha256": "88ae7575214cfeb6177696a6bdb1923c915c20956ac57d23c78091d32afe88f3"
+    }
+  ]
+}

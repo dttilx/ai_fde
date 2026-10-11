@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "apx240/job-status/v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["job_id", "kind", "status", "attempt", "deadline_at"],
+  "properties": {
+    "job_id": {"type": "string", "minLength": 1},
+    "kind": {"enum": ["MEDIA_SCAN", "OCR", "VISION", "QR", "VIDEO", "DIAGNOSIS"]},
+    "status": {"enum": ["QUEUED", "RUNNING", "SUCCEEDED", "FAILED", "TIMED_OUT", "CANCELLED", "RETRY_WAIT"]},
+    "attempt": {"type": "integer", "minimum": 0},
+    "deadline_at": {"type": "string", "format": "date-time"},
+    "error_code": {"type": ["string", "null"]},
+    "result_ref": {"type": ["string", "null"]}
+  }
+}

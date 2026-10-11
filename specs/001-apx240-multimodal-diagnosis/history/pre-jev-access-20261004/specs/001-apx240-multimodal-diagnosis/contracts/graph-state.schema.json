@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "apx240/graph-state/v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["diagnosis_run_id", "graph_thread_id", "state", "checkpoint_version", "resume_count"],
+  "properties": {
+    "diagnosis_run_id": {"type": "string", "minLength": 1},
+    "graph_thread_id": {"type": "string", "minLength": 1},
+    "state": {"enum": ["PREPARING", "SAFETY_CHECK", "RETRIEVING", "NEEDS_INFORMATION", "WAITING_EXPERT", "CONFLICT_BLOCKED", "FINALIZING", "COMPLETED", "ESCALATED", "FAILED"]},
+    "checkpoint_version": {"type": "integer", "minimum": 0},
+    "resume_count": {"type": "integer", "minimum": 0},
+    "interrupt_type": {"type": ["string", "null"], "enum": ["INFORMATION", "EXPERT", "HIGH_RISK", "REPORT_REVIEW", null]},
+    "pending_questions": {"type": "array", "items": {"type": "string"}},
+    "pending_expert_action": {"type": ["string", "null"]}
+  }
+}
